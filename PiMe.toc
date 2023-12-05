@@ -1,0 +1,13 @@
+## Interface: 11200
+## Version: 0.0.3
+## Title: PI Me
+## Notes: Replies to whispers with the remaining cooldown time of spells like Power Infusion or Innervate
+## Author: Grimfiendish / Balsan / Theory
+## SavedVariablesPerCharacter: PiMe_Cfg
+
+PiMeInit.lua
+PiMeUi.lua
+PiMeDestCharPOV.lua
+PiMeSourceCharPOV.lua
+PiMe.lua
+PiMe.xml

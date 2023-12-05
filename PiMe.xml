@@ -1,0 +1,27 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
+	
+	<!-- TODO - move to LUA w/ the rest of the UI. It's weird to have it split up. -->
+	<Frame name="PiMe_IconFrame" frameStrata="LOW" parent="UIParent"
+		enableMouse="true" hidden="true" movable="true">
+
+		<Scripts>
+			<OnUpdate>PiMe_IconFrame_OnUpdate(arg1);</OnUpdate>
+		</Scripts>
+
+		<TitleRegion setAllPoints="true"/>
+		<Size x="96" y="96"/>
+		<Anchors>
+			<Anchor point="CENTER" x="0" y="0"/>
+		</Anchors>
+
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture file="Interface\Icons\Spell_Holy_PowerInfusion" name="PiMe_Icon"/>
+			</Layer>
+		</Layers>
+
+	</Frame>
+
+</Ui>

@@ -29,6 +29,8 @@ As a priest you will often forget to cast PI on your raid's Mage/Lock. Or, if yo
 * the mage/lock doesn't need to be on 1.12 nor does he have to have PiMe installed, and
 * you MAY work with a "buddy" and you both benefit a little if you do (see below)
 
+![Priest view](/images/PiMe_Priests.png?raw=true)
+
 # Mages / Locks
 
 ## Sales pitch
@@ -55,6 +57,10 @@ This addon will notice when Power Infusion is cast upon you and then start a 3 m
 * The priest doesn't need to be on 1.12 nor does he have to have PiMe installed.
 * If you DO know/care you can set up a "buddy" (`/pime buddy Bestpriestever`) to request it.
 
+![Mage view On Cast](/images/PiMe_Mages_OnCast.png?raw=true)
+
+![Mage view After Cooldown](/images/PiMe_Mages_AfterCooldown.png?raw=true)
+
 # Installation
 
 * Download the zip
@@ -66,6 +72,8 @@ This addon will notice when Power Infusion is cast upon you and then start a 3 m
 
 * "EmeraldPowerInfusion" Addon - I added this guy's "show the icon" concept to PiMe. Thanks Nyxxis! Check his addon out here: https://github.com/NyxxisTW/EmeraldPowerInfusion/
 * "PIBuddy" Addon - I added the wording of "buddy" from seeing this addon's existence. It's a Retail WoW addon so I didn't look at it closely, but I'm sure it's amazing. Check it out if you're on Retail WoW. https://github.com/rljohn/pibuddy
-* My PI "Buddies" Nagma and Ribbons. Thanks for bein' awesome. Thanks to Ribbons for helping me vet this addon.
-* Thanks to `<Pest Control>` and `<threat>` on Everlook for a really fun 2023.
+* My PI "Buddies" Nagma and Ribbons. Thanks for bein' awesome. Thanks to Ribbons for alpha testing this addon.
+* To Maegi who sent me his button code from his "EternalDarkness" addon.
+* Thanks to `<Pest Control>` and `<threat>` on Everlook for a really fun 2023-4.
 * Thanks to `<Fists of Niall>` and `<Blue Mountain>` on Arthas for a really fun 2005-6.
+
