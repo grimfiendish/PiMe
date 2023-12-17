@@ -4,12 +4,16 @@ A Vanilla / Classic WoW Addon to manage Power Infusion requests (For Mages, Lock
 
 # Is this Addon for me?
 
-This addon is for 1.12.1 World of Warcraft clients, and for <b>Priests</b> with Power Infusion or for <b>Mages/Locks</b> (*scroll down for the mage/warlock sales pitch*) that would want it.
+This addon is for ...
+* 1.12.1 World of Warcraft clients, and
+* **for [Priests](#Using-PiMe-as-a-Priest)** with Power Infusion and
+* **for [Mages/Warlocks](#Using-PiMe-as-a-Mage-or-Warlock)** that would want it.
 
-# Installing PiMe for Priests 
+**If you're a Priest**, have a Mage/Warlock whisper you "PI ME" and PiMe'll alert you or auto-whisper the remaining cooldown.
 
-## Sales pitch
-As a priest you will often forget to cast PI on your raid's Mage/Lock. Or, if you do, they're often low mana, afk / not ready, the mob is magic-resistant, etc. This addon moves the burdeon a bit by getting the mage/warlock to request it from you. (NOTE - It does not *automatically* cast PI, you still have to cast it yourself, either "normally" or with `/pime cast`).
+**If you're a Mage / Warlock**, PiMe alerts you when you receive Power Infusion and starts a 3 minute timer to let you know when it's off cooldown.
+
+# Using PiMe as a Priest
 
 ## Functionality
 
@@ -21,7 +25,7 @@ As a priest you will often forget to cast PI on your raid's Mage/Lock. Or, if yo
 
     (each of which can be turned off).
 
-* If someone whispers you with "**pi check**" this addon auto-replies to tell them if/when it'll be up.  
+* If someone whispers you with "**pi check**" this addon whispers back to tell them when it'll be up next.
 
 ## FWIW...
 
@@ -36,54 +40,45 @@ As a priest you will often forget to cast PI on your raid's Mage/Lock. Or, if yo
 As a priest, you'll only have the giant power infusion icon to worry about. 
 
 ### Getting Set Up
-<ul>
-    <li>First, type <b><tt>/pime unlock</tt></b> to see the giant power infusion icon and move it to your preferred spot. 
-        Do this when you're not in a boss fight so it doesn't surprise you in a bad way. :^)
-    </li>
-    <li>Next, type <b><tt>/pime lock</tt></b> to hide it again.</li>
-    <li>Next, test it on yourself by setting yourself as the PI buddy <b><tt>/pime buddy [yourname-or-target-yourself]</tt></b> then manually whisper yourself with "<b><tt>/w [yourname] pi me</tt></b>". 
-        You should see a giant annoying icon, a pile of annoying chat text, and an annoying sound should play.
-    </li>
-    <li>Type <b><tt>/pime settings</tt></b> to learn how to turn off the icon/text/sound.</li>
-</ul>
+
+* Type **`/pime unlock`** to see and move the giant power infusion icon, then
+* type **`/pime lock`** to hide it again.
+* Set yourself as your PI buddy **`/pime buddy [yourname-or-target-yourself]`** then manually whisper yourself with "**`/w [yourname] pi me`**".
+* You will see a giant icon, text, and a sound will play. Type **`/pime settings`** to learn how to turn off any you dislike.
 
 ### Testing with a Mage or Warlock (even if they don't have PiMe)
 
-<ul>
-    <li>Set them as your PI target with <b><tt>/pime buddy <i>Bestmagenameever</i></tt></b>.</li>
-    <li>Have them whisper you with the text "<b><tt>PI CHECK</tt></b>". 
-        You will automatically whisper in reply to say that Power Infusion is <i>available now</i> or what the remaining cooldown is.
-    </li>
-    <li>Have them whisper you with "<b><tt>PI ME</tt></b>". 
-        Use <b><tt>/pime settings</tt></b> to turn off alerts you don't like.
-    </li>
-    <li>Cast Power Infusion or use <b><tt>/pime cast</tt></b>.</li>
-    <li>Have buddy whisper you again with <b><tt>PI CHECK</tt></b> and <b><tt>PI CAST</tt></b>.
-        Since it's on cooldown both will behave the same - whispering in reply.
-    </li>
-</ul>
+* Set the mage/warlock as your PI target with **`/pime buddy Magenamehere`**.
+* Have them whisper you with the text "**`PI CHECK`**". 
+        PiMe will reply to say that Power Infusion is *available now*.
+* Have them whisper you with "**`PI ME`**".
+        You'll see alerts. 
+        Use **`/pime settings`** to turn off any you dislike.
+* Cast Power Infusion or use **`/pime cast`**.
+* Have buddy whisper you again with **`PI CHECK`** and **`PI CAST`**.
+        PiMe will let them know it's on cooldown.
 
 That's it!
 
-# Installing PiMe for Mages / Locks
+# Using PiMe as a Mage or Warlock
 
 ## Sales pitch
 
-This addon will notice when Power Infusion is cast upon you and then start a 3 minute countdown to let you know it's available.
+This addon will notice when Power Infusion is cast upon you and then start a 3 minute countdown to let you know it's next available.
 
 ## Functionality
 
 * When you gain the PI buff it will..
 
-    1) show a small indicator bar that shows you how much time is left until it's available again,
-    2) print the message "Power Fusion is available!" once the timer is up,
-    3) play an annoying sound,
-    4) show an annoyingly large power infusion icon on screen, and
-    5) print a big annoying text banner in your chat window
+    * Play a sound,
+    * show a large icon,
+    * print a text banner in your chat window,
+    * update a cooldown timer bar, and
+    * print a chat message once the timer is up
     
     (each of which can be turned off).
 
-* You can configure a buddy and then you can use a macro to ask for PI (`/pime cast`) or to see what the cooldown is (`/pime check`).
+* You can configure a buddy and use a macro to demand PI (`/pime cast`) or to see ask for the cooldown time (`/pime check`).
 
 ## FWIW...
 
@@ -97,32 +92,24 @@ This addon will notice when Power Infusion is cast upon you and then start a 3 m
 
 ## Example usage for Mages and Warlocks
 
-As a recipient of Power Infusion, when you log in you'll have this <b>big annoying PiMe bar</b> in the middle of your screen and no way to move it without reading the documentation! :^)
+First, let's move that cooldown timer bar. 
 
 ### Getting Set Up
-<ul>
-    <li>Type <b><tt>/pime unlock</tt></b> and move the timer bar movable power infusion icon.</li>
-    <li>Type <b><tt>/pime lock</tt></b> to hide the icon and re-lock the timer bar.</li>
-    <li>Set your Priest with <b><tt>/pime buddy [priestname-or-target]</tt></b></li>
-</ul>
+
+* Type **`/pime unlock`** and move the timer bar and power infusion icon.
+* Type **`/pime lock`** to hide the icon and re-lock the timer bar.
+* Set your Priest with **`/pime buddy [priestname-or-target]`**.
 
 ### Testing with a Priest (even if they don't have PiMe)
 
-<ul>
-    <li>Type <b><tt>/pime check</tt></b> and see it whisper your buddy. 
-        If they have PiMe, they'll auto-reply with the cooldown and won't think they should cast it.
-    </li>
-    <li>Type <b><tt>/pime cast</tt></b> and see it whisper your buddy. 
-        If they have PiMe, they'll auto-reply with the cooldown if it's not available, otherwise they'll be prompted to cast PI on you.
-    </li>
-    <li>When you gain Power Infusion as a buff PiMe will show a giant annoying icon, print a bunch of annoying text, play an annoying sound, and start a visual countdown.</li>
-    <li>Type <b><tt>/pime settings</tt></b> to learn how to turn off the icon/text/sound.</li>
-    <li>You know PI is on cooldown, but verify with <b><tt>/pime check</tt></b> again.
-    </li>
-</ul>
+* Type **`/pime check`** and see it whisper your buddy.
+         A Priest with PiMe will reply with the cooldown and won't cast it.
+* Type **`/pime cast`** and see it whisper your buddy.
+        A Priest with PiMe will reply with the cooldown or his UI will pester him to cast PI.
+* When you gain Power Infusion, PiMe will show alerts. Use **`/pime settings`** to turn off those you dislike.
+* You know PI is on cooldown, but verify with **`/pime check`** again to see it in action.
 
 That's it!
-
 
 # Installation
 
@@ -132,18 +119,16 @@ That's it!
 * Log in, type `/pime help`
 
 # Other addons like PiMe
-<ul>
-<li>[ChroniclesPI](https://github.com/EinBaum/ChroniclesPI) - Looks like it does the equivalent of PiMe's "/pime cast" call.</li>
-<li>[EmeraldPowerInfusion](https://github.com/NyxxisTW/EmeraldPowerInfusion/) - This addon shows the power infusion icon. I added this functionality to PiMe after seeing it in this addon but still wanted my whisper functionality.</li>
-<li>[HBPowerInfusion](https://github.com/hitbutton/HBPowerInfusion) - I haven't used this addon but it looks like it plays a sound and handles whispers. Looks like it's set up for several different buffs, too.
-<li>[PIBuddy](https://github.com/rljohn/pibuddy) - This addon is for retail. It looks cooler than my addon, and I liked the idea of one addon that handled both perspectives of watching the Power Infusion cooldown, so I added the wording of "buddy" from seeing this addon.</li>
-<li>[PowerInfusionHandler](https://github.com/kevmodrome/PowerInfusionHandler) - Looks like it's for mages. Plays a sound and shows a nice "candy bar" cooldown bar when you gain PI.
-<li>If you're on 1.14 client, look into WeakAuras.</li>
-</li>
+* [ChroniclesPI](https://github.com/EinBaum/ChroniclesPI) - Looks like it does the equivalent of PiMe's "/pime cast" call.
+* [EmeraldPowerInfusion](https://github.com/NyxxisTW/EmeraldPowerInfusion/) - This addon shows the power infusion icon. I actually added this functionality to PiMe after seeing it in this addon but still wanted my whisper functionality. Thanks Nyxxis!
+* [HBPowerInfusion](https://github.com/hitbutton/HBPowerInfusion) - I haven't used this addon but it looks like it plays a sound and handles whispers. Looks like it's set up for several different buffs, too.
+* [PIBuddy](https://github.com/rljohn/pibuddy) - This addon is for retail. It looks cooler than my addon, and I liked the idea of one addon that handled both perspectives of watching the Power Infusion cooldown, so I added the "buddy" concept after seeing this addon. Thanks, rljohn!
+* [PowerInfusionHandler](https://github.com/kevmodrome/PowerInfusionHandler) - Looks like it's for mages. Plays a sound and shows a nice "candy bar" cooldown bar when you gain PI.
+* If you're on 1.14 client, look into WeakAuras.
 
-Feel free to check these other addons out. Honestly I think there's no way PiMe is uniquely valuable, it's just so hard to find a Vanilla addon that tells you what it is, what it's for, and how it's used!
+Feel free to check these other addons out. There's no way PiMe is uniquely valuable, it's just so hard to find a Vanilla addon that tells you what it is, what it's for, and how it's used so I ended up making my own. Hope it helps someone.
 
-FWIW I've tried to make PiMe have a tiny memory footprint. It doesn't use extra code libraries, it doesn't use custom sounds, it intentionally only updates the UI only 5 seconds so to keep memory utilization as TINY as possible. <b>This addon is two steps above a couple handy macros and that's a plus if you're anti-addon.</b>
+FWIW I've tried to make PiMe have a tiny memory footprint. It doesn't use extra code libraries, it doesn't use custom sounds, it intentionally only updates the UI only 5 seconds so to keep memory utilization as TINY as possible. **This addon is two steps above a couple handy macros and that's a plus if you're anti-addon.**
 
 # Special thanks
 
