@@ -66,10 +66,13 @@ PiMe = { }
 		countdownTimerY=nil,
 		
 		-- For a priest, this is who you'd cast PI on in raid. For a mage/lock this is who you'll whisper.
-		raidBuddy=nil
+		raidBuddy=nil,
+		
+		hasEverUnlocked=false
 	}
 
 	PiMe.nextExpiration = nil
+	PiMe.hideButtonAfter = nil
 	PiMeFrame_NextTic = 0
 	PiMe.cooldowns = { }
 	for _, sp in PiMe.COOLDOWN_SPELLS do
@@ -111,7 +114,7 @@ PiMe = { }
 	end
 
 	function PiMe.IsCountdownResponse(spell, eventMessage)
-		return false -- an ADDON message "[PiMe] Power Infusion=123.456"
+		return false -- TODO convert a message like "[PiMe] Power Infusion available in 2m 35s" into 155s and apply it to PiMe.nextExpiration and PiMe.cooldowns["Power Infusion"]
 	end
 
 	function PiMe.IsCheckRequest(spell, eventMessage)
@@ -255,10 +258,10 @@ PiMe = { }
 	end
 
 	function PiMe.GetBuddy(spellName)
-		return PiMe_Cfg.raidBuddy -- TODO unique buddy per spell... a feature I'm pretty sure nobody wants
+		return PiMe_Cfg.raidBuddy -- TODO unique buddy per spell (to support innervate and... any other spell folks come up with)
 	end
 
-	function PiMe.SetBuddy(charName, spellName) -- TODO unique buddy per spell... a feature I'm pretty sure nobody wants
+	function PiMe.SetBuddy(charName, spellName) -- TODO unique buddy per spell (to support innervate and... any other spell folks come up with)
 		PiMe_Cfg.raidBuddy = string.upper(string.sub(charName,1,1))..string.lower(string.sub(charName, 2))
 		PiMe.PPrint("Set raid buddy to ".. PiMe_Cfg.raidBuddy)
 -- TODO - below when verifying we could just do a "who" search... SendWho('n-"'..PiMe_Cfg.raidBuddy..'"')

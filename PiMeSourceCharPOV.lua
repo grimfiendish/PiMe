@@ -27,7 +27,7 @@ PiMe.SourceChar = {}
 				PiMe.PPrint(PiMe.START_COLOR..PiMe.GREEN_COLOR..eventOriginator..PiMe.END_COLOR..
 						" is asking for "..PiMe.START_COLOR..PiMe.GREEN_COLOR..spell.name..PiMe.END_COLOR..
 						" but your buddy is "..PiMe.START_COLOR..PiMe.GREEN_COLOR..buddy..PiMe.END_COLOR..
-						"! Ignoring. Change that by typing '/PiMe set buddy "..eventOriginator)
+						"! Ignoring. Change that by typing '/PiMe buddy "..eventOriginator.."'")
 			else
 				local cdCountdownSecs = PiMe.GetCooldown(spell.name)
 				if cdCountdownSecs == nil or cdCountdownSecs == 0 then

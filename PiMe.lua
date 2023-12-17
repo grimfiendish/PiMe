@@ -35,6 +35,8 @@
 		if PiMe_Cfg.countdownTimerRef ~= nil and PiMe_Cfg.countdownTimerX ~= nil and PiMe_Cfg.countdownTimerY ~= nil then 
 			PiMe.UI.CountdownButton:SetPoint(PiMe_Cfg.countdownTimerRef, PiMe_Cfg.countdownTimerX, PiMe_Cfg.countdownTimerY) 
 		end
+
+		if not PiMe_Cfg.hasEverUnlocked then PiMe.PPrint("Use '/PiMe help' to get started and '/pime unlock' will make this message go away.") end
 	end
 	
 	local function AuraUpdate()
@@ -69,6 +71,15 @@
 -- Slash-Command Support Actions
 --		From a user's slash command, these verify and execute the request
 -- == == == == == == == == == == == == == == == == == == == == -- 
+	
+	local function PrintCfg()
+			local COLOR = PiMe.START_COLOR..PiMe.EMPHASIS_COLOR
+			PiMe.PPrint("PiMe - Current Settings:")
+			PiMe.PPrint(COLOR.."    /PiMe banner "..PiMe.END_COLOR.. (PiMe_Cfg.printAnnoyingBanner and " on" or " off"))
+			PiMe.PPrint(COLOR.."    /PiMe icon "..PiMe.END_COLOR.. (PiMe_Cfg.showAnnoyingImage and " on" or " off"))
+			PiMe.PPrint(COLOR.."    /PiMe sound "..PiMe.END_COLOR.. (PiMe_Cfg.makeAnnoyingNoise and " on" or " off"))
+			PiMe.PPrint(COLOR.."    /PiMe buddy "..PiMe.END_COLOR.. (PiMe_Cfg.raidBuddy or "(not set yet)"))
+	end
 
 	local function PrintHelp() 
 		local COLOR = PiMe.START_COLOR..PiMe.EMPHASIS_COLOR
@@ -86,14 +97,14 @@
 		PiMe.PPrint(GREEN.."    /PiMe settings"..PiMe.END_COLOR.."  - print your current config")
 		PiMe.PPrint(COLOR.."    /PiMe cast"..PiMe.END_COLOR.."  - Cast power infusion on your buddy.")
 		PiMe.PPrint(COLOR.."    /PiMe check"..PiMe.END_COLOR.."  - Whisper/request spell cooldown to/from your buddy.")
-		PiMe.PPrint(COLOR.."    /PiMe unlock"..PiMe.END_COLOR.."  - Allows you to move spell icon and PiMe timer.")
-		PiMe.PPrint(COLOR.."    /PiMe lock"..PiMe.END_COLOR.."  - Hide the spell icon and re-enable the PiMe timer")
+		PiMe.PPrint(GREEN.."    /PiMe unlock"..PiMe.END_COLOR.."  - Allows you to move spell icon and PiMe timer.")
+		PiMe.PPrint(GREEN.."    /PiMe lock"..PiMe.END_COLOR.."  - Hide the spell icon and re-enable the PiMe timer")
 		PiMe.PPrint(COLOR.."    /PiMe reset"..PiMe.END_COLOR.."  - Set config back to defaults")
 		PiMe.PPrint(" ")
 	end
 
 	local function CmdHelp(cmd) 
-		if string.lower(cmd) == "help" or PiMe.Trim(cmd) == "" then PrintHelp() ; return true; end
+		if string.lower(cmd) == "help" or PiMe.Trim(cmd) == "" then PrintHelp(); PrintCfg();  return true; end
 	end
 
 	local function CmdUnlockUI(cmd)
@@ -106,7 +117,7 @@
 	local function CmdLockUI(cmd)
 		if string.lower(cmd) == "lock" then 
 			PiMe.UI.Lock()
-			UpdateCountownButton()
+			PiMe.UI.UpdateCountownButton()
 			return true
 		end
 	end
@@ -143,7 +154,7 @@
 				else
 					PiMe.PPrint("No buddy specified.")
 				end
-				UpdateCountownButton()
+				PiMe.UI.UpdateCountownButton()
 				return true
 		end
 	end
@@ -151,12 +162,7 @@
 	local function CmdPrintCfg(cmd)
 		local lcmd = string.lower(cmd)
 		if string.sub(lcmd,1,8) == "settings" then 
-			local COLOR = PiMe.START_COLOR..PiMe.EMPHASIS_COLOR
-			PiMe.PPrint("PiMe - Current Settings:")
-			PiMe.PPrint(COLOR.."    /PiMe banner "..PiMe.END_COLOR.. (PiMe_Cfg.printAnnoyingBanner and " on" or " off"))
-			PiMe.PPrint(COLOR.."    /PiMe icon "..PiMe.END_COLOR.. (PiMe_Cfg.showAnnoyingImage and " on" or " off"))
-			PiMe.PPrint(COLOR.."    /PiMe sound "..PiMe.END_COLOR.. (PiMe_Cfg.makeAnnoyingNoise and " on" or " off"))
-			PiMe.PPrint(COLOR.."    /PiMe buddy "..PiMe.END_COLOR.. (PiMe_Cfg.raidBuddy or "(not set yet)"))
+			PrintCfg()
 			return true
 		end
 	end
@@ -214,16 +220,10 @@
 
 	function PiMe_IconFrame_OnUpdate(elapsed)
 		if not PiMe.UI.locked then return end
-	
-		if this.iconVisibleTimeInSeconds then -- TODO - move this to "PiMe" obj
-			this.iconVisibleTimeInSeconds = this.iconVisibleTimeInSeconds + elapsed; 	
-		else
-			this.iconVisibleTimeInSeconds = elapsed; 	
-		end
-
-		if (this.iconVisibleTimeInSeconds > PiMe_Cfg.iconVisibleTimeInSeconds) then
+		local now = GetTime()
+		if PiMe.hideButtonAfter and PiMe.hideButtonAfter < now then
 			PiMe.UI.HideAnnoyingImage()
-			this.iconVisibleTimeInSeconds = 0;
+			PiMe.hideButtonAfter = nil
 		end
 	end
 
@@ -231,7 +231,7 @@
 		PiMe.PPrint(spell.name.." is available!")
 	end
 
-	function PiMeFrame_OnUpdate(self, elapsed)
+	function PiMeFrame_OnUpdate()
 		if not PiMe.nextExpiration then return end
 		local now = GetTime()
 
@@ -252,7 +252,7 @@
 				end
 			end
 			
-			UpdateCountownButton()
+			PiMe.UI.UpdateCountownButton()
 			
 		end
 	end
@@ -280,5 +280,4 @@
 	PiMe.UI.PiMeFrame:RegisterEvent("CHAT_MSG_WHISPER")
 	PiMe.UI.PiMeFrame:RegisterEvent("PLAYER_AURAS_CHANGED")
 	PiMe.UI.PiMeFrame:SetScript("OnEvent", PiMeFrame_OnEvent)
-	PiMe.UI.PiMeFrame:SetScript("OnLoad", PiMeFrame_OnLoad)
 	PiMe.UI.PiMeFrame:SetScript('OnUpdate', PiMeFrame_OnUpdate)
